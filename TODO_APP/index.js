@@ -6,8 +6,10 @@ const PORT = 8000;  //27017
 //This line helps to identify the .env file and access it
 //We can treat the variable in it as a global variable and use it.
 require('dotenv').config(); 
-
 const app = express();
+//Calling the created the database file (db.js) from app
+require('./db') // u dont need to specify db.js
+
 app.use(bodyParser.json());
 app.use(cors());
 
