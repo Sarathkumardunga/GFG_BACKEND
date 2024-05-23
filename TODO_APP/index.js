@@ -9,6 +9,9 @@ require('dotenv').config();
 const app = express();
 //Calling the created the database file (db.js) from app
 require('./db') // u dont need to specify db.js
+const Todo = require('./MODELS/Todo.js'); // Importing from the Models schema
+
+
 
 app.use(bodyParser.json());
 app.use(cors());
