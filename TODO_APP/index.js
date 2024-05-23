@@ -18,6 +18,30 @@ app.use(cors());
 
 app.get('/', (req, res) => {
     res.send('API is working fine');
+});
+
+//Creating api to view all todos
+//For reading using .find() method
+app.get('/gettodos', async (req, res) => {
+    const allTodos = await Todo.find();
+    res.json(allTodos);
+});
+
+//API to post a task
+// Use post method to create an entry
+app.post('/addtodos', async (req, res) => {
+    const {task, completed} = req.body;
+    //U can validate the provided fields
+    const todo = new Todo({
+        task,
+        completed
+    })
+
+    const savedTodo = await todo.save();
+    res.json({
+        message: "Todo saved successfully",
+        savedTodo: savedTodo
+    });
 })
 
 app.listen(PORT, () => {
